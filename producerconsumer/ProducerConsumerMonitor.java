@@ -36,11 +36,11 @@ public class ProducerConsumerMonitor {
 
             // Notify all waiting threads (consumers and potentially other producers)
             notifyAll();
-            if (counter == 1) notify();
+            if (counter == 1) notifyAll();
 
 
         } catch (InterruptedException e) {
-            e.printStackTrace();
+        	Thread.currentThread().interrupt();
         }
     }
 
@@ -57,11 +57,12 @@ public class ProducerConsumerMonitor {
             counter -= quantity;
             notifyAll();
             // Notify all waiting threads (producers and potentially other consumers)
-            if (counter == n - 1) notify();
+            if (counter == n - 1) notifyAll();
             
 
         } catch (InterruptedException e) {
-    	    e.printStackTrace();        	
+        	Thread.currentThread().interrupt();
+      	
         }
     }
 

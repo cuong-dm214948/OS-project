@@ -155,7 +155,7 @@ public class Main extends Application{
 		            	int n = Integer.parseInt(num);
 		            	ProducerConsumerMonitor monitor = new ProducerConsumerMonitor(n);
 		                button1.setOnAction(event -> {
-		                    // info of product 
+		                    try{
 		                	
 		                    String id1 = textField1.getText();
 		                    String name = textField2.getText();
@@ -172,8 +172,15 @@ public class Main extends Application{
 		                    //list of created product
 		                    String result = monitor.readAccountsFromFile();
 		                    textField7.setText(result);
-		                    }
 		                    textField8.setText("produced product");
+		                    }
+		                    else {textField8.setText("not enough input");}
+		                   
+		                    }
+		                    catch (NumberFormatException e) {
+		                        // Handle the case where parsing the input as integers fails
+		                        textField8.setText("Invalid input");
+		                    }
 		                });
 		                
 		                button2.setOnAction(event -> {
@@ -197,7 +204,12 @@ public class Main extends Application{
 		                        // Read accounts from file and set the result in textField7
 		                        String result2 = monitor.readAccountsFromFile();
 		                        textField7.setText(result2);
-		                    }}catch (NumberFormatException e) {
+		                        
+		                    }
+		                     else {
+		                        	textField8.setText("not enough input");
+		                        }
+		                    }catch (NumberFormatException e) {
 		                        // Handle the case where parsing the input as integers fails
 		                        textField8.setText("Invalid input");
 		                    }
@@ -208,6 +220,7 @@ public class Main extends Application{
             	else {
             		textField8.setText("not enough input!");
             	}
+            	
             	}
             	catch (NumberFormatException e) {
             		textField8.setText("error input: interger!");            		

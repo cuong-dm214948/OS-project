@@ -12,7 +12,7 @@ public class Consumer{
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String time = currentTime.format(formatter); 
         
-        result += ("consuming " + id + "at " + time );
+        result += ("consuming product: " + id + " at " + time );
         return result;
     }
 	
